@@ -1,4 +1,4 @@
-import { styled, keyframes } from 'goober';
+import { styled, keyframes } from 'voby-styled'
 
 const circleAnimation = keyframes`
 from {
@@ -8,7 +8,7 @@ from {
 to {
  transform: scale(1) rotate(45deg);
   opacity: 1;
-}`;
+}`
 
 const firstLineAnimation = keyframes`
 from {
@@ -18,7 +18,7 @@ from {
 to {
   transform: scale(1);
   opacity: 1;
-}`;
+}`
 
 const secondLineAnimation = keyframes`
 from {
@@ -28,19 +28,19 @@ from {
 to {
   transform: scale(1) rotate(90deg);
 	opacity: 1;
-}`;
+}`
 
 export interface ErrorTheme {
-  primary?: string;
-  secondary?: string;
+    primary?: string
+    secondary?: string
 }
 
-export const ErrorIcon = styled('div')<ErrorTheme>`
+export const ErrorIcon = styled('div')`
   width: 20px;
   opacity: 0;
   height: 20px;
   border-radius: 10px;
-  background: ${(p) => p.primary || '#ff4b4b'};
+  background: #ff4b4b;
   position: relative;
   transform: rotate(45deg);
 
@@ -56,7 +56,7 @@ export const ErrorIcon = styled('div')<ErrorTheme>`
     position: absolute;
     border-radius: 3px;
     opacity: 0;
-    background: ${(p) => p.secondary || '#fff'};
+    background: #fff;
     bottom: 9px;
     left: 4px;
     height: 2px;
@@ -68,4 +68,4 @@ export const ErrorIcon = styled('div')<ErrorTheme>`
     animation-delay: 180ms;
     transform: rotate(90deg);
   }
-`;
+`

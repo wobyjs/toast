@@ -1,213 +1,129 @@
-import { useEffect, useState } from 'react';
-import { DefaultToastOptions, Toast, ToastType } from './types';
+import { $, $$, Observable, useMemo } from 'voby'
+import { DefaultToastOptions, Toast, ToastType } from './types'
 
-const TOAST_LIMIT = 20;
+const TOAST_LIMIT = 20
 
-export enum ActionType {
-  ADD_TOAST,
-  UPDATE_TOAST,
-  UPSERT_TOAST,
-  DISMISS_TOAST,
-  REMOVE_TOAST,
-  START_PAUSE,
-  END_PAUSE,
-}
+// interface State {
+//     toasts: Observable<Toast[]>
+//     pausedAt: Observable<number | undefined>
+// }
 
-type Action =
-  | {
-      type: ActionType.ADD_TOAST;
-      toast: Toast;
-    }
-  | {
-      type: ActionType.UPSERT_TOAST;
-      toast: Toast;
-    }
-  | {
-      type: ActionType.UPDATE_TOAST;
-      toast: Partial<Toast>;
-    }
-  | {
-      type: ActionType.DISMISS_TOAST;
-      toastId?: string;
-    }
-  | {
-      type: ActionType.REMOVE_TOAST;
-      toastId?: string;
-    }
-  | {
-      type: ActionType.START_PAUSE;
-      time: number;
-    }
-  | {
-      type: ActionType.END_PAUSE;
-      time: number;
-    };
+const toastTimeouts = new Map<Toast['id'], ReturnType<typeof setTimeout>>()
 
-interface State {
-  toasts: Toast[];
-  pausedAt: number | undefined;
-}
-
-const toastTimeouts = new Map<Toast['id'], ReturnType<typeof setTimeout>>();
-
-export const TOAST_EXPIRE_DISMISS_DELAY = 1000;
-
-const addToRemoveQueue = (toastId: string) => {
-  if (toastTimeouts.has(toastId)) {
-    return;
-  }
-
-  const timeout = setTimeout(() => {
-    toastTimeouts.delete(toastId);
-    dispatch({
-      type: ActionType.REMOVE_TOAST,
-      toastId: toastId,
-    });
-  }, TOAST_EXPIRE_DISMISS_DELAY);
-
-  toastTimeouts.set(toastId, timeout);
-};
-
-const clearFromRemoveQueue = (toastId: string) => {
-  const timeout = toastTimeouts.get(toastId);
-  if (timeout) {
-    clearTimeout(timeout);
-  }
-};
-
-export const reducer = (state: State, action: Action): State => {
-  switch (action.type) {
-    case ActionType.ADD_TOAST:
-      return {
-        ...state,
-        toasts: [action.toast, ...state.toasts].slice(0, TOAST_LIMIT),
-      };
-
-    case ActionType.UPDATE_TOAST:
-      //  ! Side effects !
-      if (action.toast.id) {
-        clearFromRemoveQueue(action.toast.id);
-      }
-
-      return {
-        ...state,
-        toasts: state.toasts.map((t) =>
-          t.id === action.toast.id ? { ...t, ...action.toast } : t
-        ),
-      };
-
-    case ActionType.UPSERT_TOAST:
-      const { toast } = action;
-      return state.toasts.find((t) => t.id === toast.id)
-        ? reducer(state, { type: ActionType.UPDATE_TOAST, toast })
-        : reducer(state, { type: ActionType.ADD_TOAST, toast });
-
-    case ActionType.DISMISS_TOAST:
-      const { toastId } = action;
-
-      // ! Side effects ! - This could be execrated into a dismissToast() action, but I'll keep it here for simplicity
-      if (toastId) {
-        addToRemoveQueue(toastId);
-      } else {
-        state.toasts.forEach((toast) => {
-          addToRemoveQueue(toast.id);
-        });
-      }
-
-      return {
-        ...state,
-        toasts: state.toasts.map((t) =>
-          t.id === toastId || toastId === undefined
-            ? {
-                ...t,
-                visible: false,
-              }
-            : t
-        ),
-      };
-    case ActionType.REMOVE_TOAST:
-      if (action.toastId === undefined) {
-        return {
-          ...state,
-          toasts: [],
-        };
-      }
-      return {
-        ...state,
-        toasts: state.toasts.filter((t) => t.id !== action.toastId),
-      };
-
-    case ActionType.START_PAUSE:
-      return {
-        ...state,
-        pausedAt: action.time,
-      };
-
-    case ActionType.END_PAUSE:
-      const diff = action.time - (state.pausedAt || 0);
-
-      return {
-        ...state,
-        pausedAt: undefined,
-        toasts: state.toasts.map((t) => ({
-          ...t,
-          pauseDuration: t.pauseDuration + diff,
-        })),
-      };
-  }
-};
-
-const listeners: Array<(state: State) => void> = [];
-
-let memoryState: State = { toasts: [], pausedAt: undefined };
-
-export const dispatch = (action: Action) => {
-  memoryState = reducer(memoryState, action);
-  listeners.forEach((listener) => {
-    listener(memoryState);
-  });
-};
+export const TOAST_EXPIRE_DISMISS_DELAY = 1000
 
 export const defaultTimeouts: {
-  [key in ToastType]: number;
+    [key in ToastType]: number
 } = {
-  blank: 4000,
-  error: 4000,
-  success: 2000,
-  loading: Infinity,
-  custom: 4000,
-};
+    blank: 4000,
+    error: 4000,
+    success: 2000,
+    loading: Infinity,
+    custom: 4000,
+}
 
-export const useStore = (toastOptions: DefaultToastOptions = {}): State => {
-  const [state, setState] = useState<State>(memoryState);
-  useEffect(() => {
-    listeners.push(setState);
-    return () => {
-      const index = listeners.indexOf(setState);
-      if (index > -1) {
-        listeners.splice(index, 1);
-      }
-    };
-  }, [state]);
+const toasts = $<Toast[]>([])
+const pausedAt = $<number>(undefined)
+const onAdded = [] as ((toast: Toast) => void)[]
+const onRemoved = [] as ((toast: Toast) => void)[]
 
-  const mergedToasts = state.toasts.map((t) => ({
-    ...toastOptions,
-    ...toastOptions[t.type],
-    ...t,
-    duration:
-      t.duration ||
-      toastOptions[t.type]?.duration ||
-      toastOptions?.duration ||
-      defaultTimeouts[t.type],
-    style: {
-      ...toastOptions.style,
-      ...toastOptions[t.type]?.style,
-      ...t.style,
-    },
-  }));
+export const useStore = (toastOptions: DefaultToastOptions = {}) => {
+    const addToRemoveQueue = (toastId: string) => {
+        if (toastTimeouts.has(toastId)) {
+            return
+        }
 
-  return {
-    ...state,
-    toasts: mergedToasts,
-  };
-};
+        const timeout = setTimeout(() => {
+            toastTimeouts.delete(toastId)
+            remove(toastId)
+        }, TOAST_EXPIRE_DISMISS_DELAY)
+
+        toastTimeouts.set(toastId, timeout)
+    }
+
+
+    const addOrUpdate = (toast: Toast) => {
+        const idx = toasts().findIndex((t) => t.id === toast.id)
+        if (idx >= 0)
+            return toasts()[idx]
+
+        toasts([toast, ...toasts()].slice(0, TOAST_LIMIT)); onAdded.forEach(f => f(toast))
+        return toasts()[0]
+    }
+
+    const removeByIndex = <T>(array: T[], index: number): T | undefined => {
+        if (index >= 0 && index < array.length)
+            return array.splice(index, 1)[0]
+        else
+            return undefined
+    }
+    const dismiss = (toastId: string) => {
+        // ! Side effects ! - This could be execrated into a dismissToast() action, but I'll keep it here for simplicity
+        if (toastId)
+            addToRemoveQueue(toastId)
+        else
+            toasts().forEach((toast) => addToRemoveQueue(toast.id))
+
+        return toasts(toasts().map((t) => t.id === toastId || toastId === undefined ? (t.visible(false), t) : t))
+    }
+
+    const remove = (toastId: string) => {
+        if (toastId === undefined)
+            return toasts([])
+
+        const ts = $$(toasts)
+        const idx = toasts().findIndex((t) => t.id === toastId)
+        if (idx >= 0) {
+            onRemoved.forEach(f => f(ts[idx]))
+            removeByIndex(ts, idx)
+            return toasts([...ts])
+        }
+        else
+            return toasts()
+    }
+
+    const isActive = (toastId: string) => toasts().findIndex((t) => t.id === toastId) >= 0
+
+    const startPause = (time: number) => pausedAt(time)
+
+    const endPause = (time: number) => {
+        const diff = time - (pausedAt() || 0)
+
+        pausedAt(undefined)
+        toasts(toasts().map((t) => ({
+            ...t,
+            pauseDuration: $$(t.pauseDuration) + diff,
+        })))
+    }
+
+    const mergedToasts = toasts().map((t) => ({
+        ...toastOptions,
+        ...$$(toastOptions[$$(t.type)]),
+        ...t,
+        duration: useMemo(() =>
+            $$(t.duration) ||
+            $$(toastOptions[$$(t.type)]?.duration) ||
+            $$(toastOptions?.duration) ||
+            $$(defaultTimeouts[$$(t.type)])),
+        style: useMemo(() => ({
+            ...$$(toastOptions.style),
+            ...$$(toastOptions[$$(t.type)]?.style),
+            ...$$(t.style),
+        })),
+    }))
+    toasts(mergedToasts)
+    return {
+        toasts,
+        pausedAt,
+        // UPDATE_TOAST,
+        // UPSERT_TOAST,
+        addOrUpdate,
+        dismiss,
+        remove,
+        startPause,
+        endPause,
+        isActive,
+        onRemoved,
+        onAdded
+    }
+}

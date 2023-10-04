@@ -1,7 +1,9 @@
-interface SvgrComponent
-  extends React.StatelessComponent<React.SVGAttributes<SVGElement>> {}
+// import * as voby from 'voby'
 
-declare module '*.svg' {
-  const value: SvgrComponent;
-  export default value;
-}
+// interface SvgrComponent
+//   extends StatelessComponent<JSX.SVGAttributes<SVGElement>> {}
+
+// declare module '*.svg' {
+//     const value: (props: JSX.SVGAttributes<SVGElement>) => SVGSVGElement
+//     export default value
+// }

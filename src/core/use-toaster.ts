@@ -1,96 +1,75 @@
-import { useEffect, useCallback } from 'react';
-import { dispatch, ActionType, useStore } from './store';
-import { toast } from './toast';
-import { DefaultToastOptions, Toast, ToastPosition } from './types';
-
-const updateHeight = (toastId: string, height: number) => {
-  dispatch({
-    type: ActionType.UPDATE_TOAST,
-    toast: { id: toastId, height },
-  });
-};
-const startPause = () => {
-  dispatch({
-    type: ActionType.START_PAUSE,
-    time: Date.now(),
-  });
-};
+import { useEffect, $, $$, ObservableMaybe, useMemo, Observable, ObservableReadonly } from 'voby'
+import { useStore } from './store'
+import { toast } from './toast'
+import { DefaultToastOptions, Toast, ToastPosition } from './types'
 
 export const useToaster = (toastOptions?: DefaultToastOptions) => {
-  const { toasts, pausedAt } = useStore(toastOptions);
+    const { toasts, pausedAt, startPause: StartPause, endPause: EndPause, onAdded, onRemoved } = useStore(toastOptions)
 
-  useEffect(() => {
-    if (pausedAt) {
-      return;
-    }
+    const startPause = () => StartPause(Date.now())
+    const updateHeight = (toast: Toast, height: number) => toast.height(height)
 
-    const now = Date.now();
-    const timeouts = toasts.map((t) => {
-      if (t.duration === Infinity) {
-        return;
-      }
-
-      const durationLeft =
-        (t.duration || 0) + t.pauseDuration - (now - t.createdAt);
-
-      if (durationLeft < 0) {
-        if (t.visible) {
-          toast.dismiss(t.id);
+    useEffect(() => {
+        if ($$(pausedAt)) {
+            return void 0
         }
-        return;
-      }
-      return setTimeout(() => toast.dismiss(t.id), durationLeft);
-    });
 
-    return () => {
-      timeouts.forEach((timeout) => timeout && clearTimeout(timeout));
-    };
-  }, [toasts, pausedAt]);
+        const now = Date.now()
+        const timeouts = toasts().map((t) => {
+            if (t.duration === Infinity) {
+                return void 0
+            }
 
-  const endPause = useCallback(() => {
-    if (pausedAt) {
-      dispatch({ type: ActionType.END_PAUSE, time: Date.now() });
+            const durationLeft = ($$(t.duration) || 0) + $$(t.pauseDuration) - (now - $$(t.createdAt))
+
+            if (durationLeft < 0) {
+                if ($$(t.visible)) {
+                    toast.dismiss(t.id)
+                }
+                return void 0
+            }
+            return setTimeout(() => toast.dismiss(t.id), durationLeft)
+        })
+
+        return () => {
+            timeouts.forEach((timeout) => timeout && clearTimeout(timeout))
+        }
+    })
+
+    const endPause = () => {
+        if ($$(pausedAt))
+            EndPause(Date.now())
     }
-  }, [pausedAt]);
 
-  const calculateOffset = useCallback(
-    (
-      toast: Toast,
-      opts?: {
-        reverseOrder?: boolean;
-        gutter?: number;
-        defaultPosition?: ToastPosition;
-      }
-    ) => {
-      const { reverseOrder = false, gutter = 8, defaultPosition } = opts || {};
+    const calculateOffset = (toast: Toast, opts?: { reverseOrder?: ObservableMaybe<boolean>, gutter?: number, defaultPosition?: ToastPosition, }) => {
+        return useMemo(() => {
+            const { reverseOrder = false, gutter = 8, defaultPosition } = opts || {}
 
-      const relevantToasts = toasts.filter(
-        (t) =>
-          (t.position || defaultPosition) ===
-            (toast.position || defaultPosition) && t.height
-      );
-      const toastIndex = relevantToasts.findIndex((t) => t.id === toast.id);
-      const toastsBefore = relevantToasts.filter(
-        (toast, i) => i < toastIndex && toast.visible
-      ).length;
+            const relevantToasts = toasts().filter((t) =>
+                (t.position || defaultPosition) ===
+                (toast.position || defaultPosition) && t.height
+            )
+            const toastIndex = relevantToasts.findIndex((t) => t.id === toast.id)
+            const toastsBefore = relevantToasts.filter((toast, i) => i < toastIndex /* && $$(toast.visible) */).length
 
-      const offset = relevantToasts
-        .filter((t) => t.visible)
-        .slice(...(reverseOrder ? [toastsBefore + 1] : [0, toastsBefore]))
-        .reduce((acc, t) => acc + (t.height || 0) + gutter, 0);
+            const offset = relevantToasts
+                .filter((t) => $$(t.visible))
+                .slice(...($$(reverseOrder) ? [toastsBefore + 1] : [0, toastsBefore]))
+                .reduce((acc, t) => acc + ($$(t.height) || 0) + gutter, 0)
 
-      return offset;
-    },
-    [toasts]
-  );
+            return offset
+        })
+    }
 
-  return {
-    toasts,
-    handlers: {
-      updateHeight,
-      startPause,
-      endPause,
-      calculateOffset,
-    },
-  };
-};
+    return {
+        toasts,
+        handlers: {
+            updateHeight,
+            startPause,
+            endPause,
+            calculateOffset,
+            onAdded,
+            onRemoved
+        },
+    }
+}

@@ -1,92 +1,93 @@
 import {
-  Renderable,
-  Toast,
-  ToastOptions,
-  ToastType,
-  DefaultToastOptions,
-  ValueOrFunction,
-  resolveValue,
-} from './types';
-import { genId } from './utils';
-import { dispatch, ActionType } from './store';
+    Toast,
+    ToastOptions,
+    ToastType,
+    DefaultToastOptions,
+    ValueOrFunction,
+    resolveValue,
+} from './types'
+import { genId } from './utils'
+import { useStore } from './store'
+import { Child, Observable, ObservableMaybe } from 'voby'
+import { $, $$ } from 'voby'
 
-type Message = ValueOrFunction<Renderable, Toast>;
+const { toasts, addOrUpdate, dismiss, remove, } = useStore()
 
-type ToastHandler = (message: Message, options?: ToastOptions) => string;
+type Message = Child | ((t: Toast) => Child) // ValueOrFunction<Child, Toast>
 
-const createToast = (
-  message: Message,
-  type: ToastType = 'blank',
-  opts?: ToastOptions
-): Toast => ({
-  createdAt: Date.now(),
-  visible: true,
-  type,
-  ariaProps: {
-    role: 'status',
-    'aria-live': 'polite',
-  },
-  message,
-  pauseDuration: 0,
-  ...opts,
-  id: opts?.id || genId(),
-});
+type ToastHandler = (message: ObservableMaybe<Message | Toast | ((t: any) => Child)>, options?: ToastOptions) => string
 
-const createHandler =
-  (type?: ToastType): ToastHandler =>
-  (message, options) => {
-    const toast = createToast(message, type, options);
-    dispatch({ type: ActionType.UPSERT_TOAST, toast });
-    return toast.id;
-  };
+const createToast = (message: ObservableMaybe<Message | Toast | ((t: any) => Child)>, type: ObservableMaybe<ToastType> = $('blank'), opts?: ToastOptions): Toast => ({
+    createdAt: $(Date.now()),
+    height: $(),
+    visible: $(true),
+    type,
+    ariaProps: {
+        role: 'status',
+        'aria-live': 'polite',
+    },
+    //@ts-ignore
+    message, //: isObservable(message) ? message : $(message),
+    pauseDuration: $(1000), //5000000),
+    ...opts,
+    id: opts?.id || genId(),
+})
 
-const toast = (message: Message, opts?: ToastOptions) =>
-  createHandler('blank')(message, opts);
+const createHandler = (type?: ToastType): ToastHandler => (message, options) => {
+    if (options?.id) {
+        const r = toasts().find(t => t.id === options.id)
+        if (r) {
+            r.createdAt(Date.now())
+            r.message(resolveValue(message, r))
+            r.visible(true)
+            return r.id
+        }
+    }
 
-toast.error = createHandler('error');
-toast.success = createHandler('success');
-toast.loading = createHandler('loading');
-toast.custom = createHandler('custom');
+    const toast = createToast(message, type, options)
+    addOrUpdate(toast)
+    return toast.id
+}
 
-toast.dismiss = (toastId?: string) => {
-  dispatch({
-    type: ActionType.DISMISS_TOAST,
-    toastId,
-  });
-};
+const toast = (message: ObservableMaybe<Message | Toast> | ((t: any) => Child), opts?: ToastOptions) => createHandler('blank')(message, opts)
 
-toast.remove = (toastId?: string) =>
-  dispatch({ type: ActionType.REMOVE_TOAST, toastId });
+toast.error = createHandler('error')
+toast.success = createHandler('success')
+toast.loading = createHandler('loading')
+toast.custom = createHandler('custom')
+
+toast.dismiss = (toastId?: string) => dismiss(toastId)
+toast.remove = (toastId?: string) => remove(toastId)
 
 toast.promise = <T>(
-  promise: Promise<T>,
-  msgs: {
-    loading: Renderable;
-    success: ValueOrFunction<Renderable, T>;
-    error: ValueOrFunction<Renderable, any>;
-  },
-  opts?: DefaultToastOptions
+    promise: Promise<T>,
+    msgs: {
+        loading: Observable<Child | Toast>
+        success: ValueOrFunction<Observable<Child | Toast>, T>
+        error: ValueOrFunction<Observable<Child | Toast>, any>
+    },
+    opts?: DefaultToastOptions
 ) => {
-  const id = toast.loading(msgs.loading, { ...opts, ...opts?.loading });
+    const id = toast.loading(msgs.loading, { ...opts, ...opts?.loading })
 
-  promise
-    .then((p) => {
-      toast.success(resolveValue(msgs.success, p), {
-        id,
-        ...opts,
-        ...opts?.success,
-      });
-      return p;
-    })
-    .catch((e) => {
-      toast.error(resolveValue(msgs.error, e), {
-        id,
-        ...opts,
-        ...opts?.error,
-      });
-    });
+    promise
+        .then((p) => {
+            toast.success(resolveValue(msgs.success, p), {
+                id,
+                ...opts,
+                ...opts?.success,
+            })
+            return p
+        })
+        .catch((e) => {
+            toast.error(resolveValue(msgs.error, e), {
+                id,
+                ...opts,
+                ...opts?.error,
+            })
+        })
 
-  return promise;
-};
+    return promise
+}
 
-export { toast };
+export { toast }

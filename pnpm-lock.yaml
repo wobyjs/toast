@@ -15,16 +15,16 @@ devDependencies:
   '@testing-library/jest-dom':
     specifier: ^5.16.4
     version: 5.16.4
-  '@testing-library/react':
+  '@testing-library/voby':
     specifier: ^13.3.0
-    version: 13.3.0(react-dom@18.2.0)(react@18.2.0)
+    version: 13.3.0(voby-dom@18.2.0)(voby@18.2.0)
   '@types/jest':
     specifier: ^28.1.5
     version: 28.1.5
-  '@types/react':
+  '@types/voby':
     specifier: ^18.0.15
     version: 18.0.15
-  '@types/react-dom':
+  '@types/voby-dom':
     specifier: ^18.0.6
     version: 18.0.6
   '@types/testing-library__jest-dom':
@@ -42,12 +42,12 @@ devDependencies:
   prettier:
     specifier: ^2.7.1
     version: 2.7.1
-  react:
+  voby:
     specifier: ^18.2.0
     version: 18.2.0
-  react-dom:
+  voby-dom:
     specifier: ^18.2.0
-    version: 18.2.0(react@18.2.0)
+    version: 18.2.0(voby@18.2.0)
   size-limit:
     specifier: ^7.0.8
     version: 7.0.8
@@ -979,18 +979,18 @@ packages:
       redent: 3.0.0
     dev: true
 
-  /@testing-library/react@13.3.0(react-dom@18.2.0)(react@18.2.0):
+  /@testing-library/voby@13.3.0(voby-dom@18.2.0)(voby@18.2.0):
     resolution: {integrity: sha512-DB79aA426+deFgGSjnf5grczDPiL4taK3hFaa+M5q7q20Kcve9eQottOG5kZ74KEr55v0tU2CQormSSDK87zYQ==}
     engines: {node: '>=12'}
     peerDependencies:
-      react: ^18.0.0
-      react-dom: ^18.0.0
+      voby: ^18.0.0
+      voby-dom: ^18.0.0
     dependencies:
       '@babel/runtime': 7.18.6
       '@testing-library/dom': 8.16.0
-      '@types/react-dom': 18.0.6
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
+      '@types/voby-dom': 18.0.6
+      voby: 18.2.0
+      voby-dom: 18.2.0(voby@18.2.0)
     dev: true
 
   /@tootallnate/once@2.0.0:
@@ -1084,13 +1084,13 @@ packages:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
 
-  /@types/react-dom@18.0.6:
+  /@types/voby-dom@18.0.6:
     resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
     dependencies:
-      '@types/react': 18.0.15
+      '@types/voby': 18.0.15
     dev: true
 
-  /@types/react@18.0.15:
+  /@types/voby@18.0.15:
     resolution: {integrity: sha512-iz3BtLuIYH1uWdsv6wXYdhozhqj20oD4/Hk2DNXIn1kFsmp9x8d9QB6FnPhfkbhd2PgEONt9Q1x/ebkwjfFLow==}
     dependencies:
       '@types/prop-types': 15.7.5
@@ -1829,7 +1829,7 @@ packages:
     optional: true
 
   /esbuild-windows-arm64@0.14.49:
-    resolution: {integrity: sha512-v+HYNAXzuANrCbbLFJ5nmO3m5y2PGZWLe3uloAkLt87aXiO2mZr3BTmacZdjwNkNEHuH3bNtN8cak+mzVjVPfA==}
+    resolution: {integrity: sha512-voby-simple-router+HYNAXzuANrCbbLFJ5nmO3m5y2PGZWLe3uloAkLt87aXiO2mZr3BTmacZdjwNkNEHuH3bNtN8cak+mzVjVPfA==}
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [win32]
@@ -3161,7 +3161,7 @@ packages:
     dependencies:
       ansi-regex: 5.0.1
       ansi-styles: 5.2.0
-      react-is: 17.0.2
+      voby-is: 17.0.2
     dev: true
 
   /pretty-format@28.1.3:
@@ -3171,7 +3171,7 @@ packages:
       '@jest/schemas': 28.1.3
       ansi-regex: 5.0.1
       ansi-styles: 5.2.0
-      react-is: 18.2.0
+      voby-is: 18.2.0
     dev: true
 
   /prompts@2.4.2:
@@ -3200,25 +3200,25 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
 
-  /react-dom@18.2.0(react@18.2.0):
+  /voby-dom@18.2.0(voby@18.2.0):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
-      react: ^18.2.0
+      voby: ^18.2.0
     dependencies:
       loose-envify: 1.4.0
-      react: 18.2.0
+      voby: 18.2.0
       scheduler: 0.23.0
     dev: true
 
-  /react-is@17.0.2:
+  /voby-is@17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
     dev: true
 
-  /react-is@18.2.0:
+  /voby-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: true
 
-  /react@18.2.0:
+  /voby@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
     engines: {node: '>=0.10.0'}
     dependencies:
@@ -3422,7 +3422,7 @@ packages:
     dev: true
 
   /string-length@4.0.2:
-    resolution: {integrity: sha512-+l6rNN5fYHNhZZy41RXsYptCjA2Igmq4EG7kZAYFQI1E1VTXarr6ZPXBg6eq7Y6eK4FEhY6AJlyuFIb/v/S0VQ==}
+    resolution: {integrity: sha512-+l6rNN5fYHNhZZy41RXsYptCjA2Igmq4EG7kZAYFQI1E1VTXarr6ZPXBg6eq7Y6eK4FEhY6AJlyuFIb/voby-simple-router/S0VQ==}
     engines: {node: '>=10'}
     dependencies:
       char-regex: 1.0.2
