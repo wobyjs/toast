@@ -15,11 +15,6 @@
 </div>
 
 <br />
-<div align="center">
-  <sub>Cooked by <a href="https://twitter.com/timolins">Timo Lins</a> 👨‍🍳</sub>
-</div>
-
-<br />
 
 ## Features
 
