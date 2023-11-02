@@ -2,9 +2,8 @@
     "name": "woby-toast",
     "description": "Smoking hot woby Notifications. Lightweight, customizable and beautiful by default.",
     "version": "2.4.1",
-    "author": "Timo Lins",
     "license": "MIT",
-    "repository": "timolins/woby-hot-toast",
+    "repository": "https://github.com/wongchichong/woby-toast",
     "keywords": [
         "woby",
         "notifications",
