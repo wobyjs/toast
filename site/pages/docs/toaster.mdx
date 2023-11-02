@@ -1,5 +1,5 @@
 import Layout from '../../components/docs-layout';
-import toast from 'voby-toast';
+import toast from 'woby-toast';
 
 export const meta = {
   title: '<Toaster/> API',
@@ -76,12 +76,12 @@ You can change the defaults for a specific type by adding, `success: {}`, `error
 
 ## Using a custom render function
 
-You can provide your **own render function** to the Toaster by passing it as children. It will be called for each [Toast](https://github.com/timolins/voby-toast/blob/main/src/core/types.ts#L34) allowing you to render any component based on the toast state.
+You can provide your **own render function** to the Toaster by passing it as children. It will be called for each [Toast](https://github.com/timolins/woby-toast/blob/main/src/core/types.ts#L34) allowing you to render any component based on the toast state.
 
 ### Minimal example
 
 ```jsx
-import { Toaster, resolveValue } from 'voby-toast';
+import { Toaster, resolveValue } from 'woby-toast';
 
 // In your app
 <Toaster>
@@ -102,7 +102,7 @@ import { Toaster, resolveValue } from 'voby-toast';
 You can use this API to modify the default ToastBar as well. In this example we overwrite the animation style based on the current state.
 
 ```jsx
-import { Toaster, ToastBar } from 'voby-toast';
+import { Toaster, ToastBar } from 'woby-toast';
 
 <Toaster>
   {(t) => (

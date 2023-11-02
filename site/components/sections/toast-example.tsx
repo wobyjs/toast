@@ -1,4 +1,4 @@
-import { $, $$ } from 'voby'
+import { $, $$ } from 'woby'
 import toast from '../../../src'
 
 import { EmojiButton } from '../emoji-button'

@@ -1,10 +1,10 @@
-import { $, $$, Child, useMemo } from 'voby'
-import { tw, keyframes } from 'voby-styled'
+import { $, $$, Child, useMemo, type JSX } from 'woby'
+import { tw, keyframes } from 'woby-styled'
 
 import { Toast, ToastPosition, resolveValue } from '../core/types'
 import { ToastIcon } from './toast-icon'
 import { prefersReducedMotion } from '../core/utils'
-import { CSSProperties, ObservableMaybe } from 'voby'
+import { CSSProperties, ObservableMaybe } from 'woby'
 
 const enterAnimation = (factor: number) => `
 0% {transform: translate3d(0,${factor * -200}%,0) scale(.6); opacity:.5;}
@@ -71,7 +71,7 @@ export const ToastBar = ({ toast, position, style, children }: ToastBarProps) =>
     </Message>
 
     return <ToastBarBase
-        className={$$(toast).className}
+        className={() => $$(toast).className}
         style={animationStyle}
     >
         {() => typeof children === 'function' ? (

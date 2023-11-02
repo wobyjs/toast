@@ -1,13 +1,14 @@
 /** @jsx  */
-import { ObservableMaybe, jsx, $$, useMemo } from 'voby'
+import { ObservableMaybe, jsx, $$, useMemo, type JSX } from 'woby'
 
-import { tw, styled, keyframes } from 'voby-styled'
+import { tw, styled, keyframes } from 'woby-styled'
 
 import { Toast } from '../core/types'
 import { ErrorIcon, ErrorTheme } from './error'
 import { LoaderIcon, LoaderTheme } from './loader'
 import { CheckmarkIcon, CheckmarkTheme } from './checkmark'
-import { } from 'voby/dist/types/jsx/types'
+
+// import type { JSX } from 'woby/jsx-runtime'
 
 const StatusWrapper = tw('div')`absolute`
 
@@ -52,13 +53,13 @@ export const ToastIcon = ({ toast }: { toast: ObservableMaybe<Toast> }) => {
     }
 
     return useMemo(() => <IndicatorWrapper>
-        <LoaderIcon {...iconTheme} />
+        <LoaderIcon /* {...iconTheme} */ />
         {() => type !== 'loading' && (
             <StatusWrapper>
                 {() => type === 'error' ? (
-                    <ErrorIcon {...iconTheme} />
+                    <ErrorIcon /* {...iconTheme} */ />
                 ) : (
-                    <CheckmarkIcon {...iconTheme} />
+                    <CheckmarkIcon /* {...iconTheme} */ />
                 )}
             </StatusWrapper>
         )}

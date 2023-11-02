@@ -1,4 +1,4 @@
-import { styled, keyframes } from 'voby-styled'
+import { styled, keyframes } from 'woby-styled'
 
 const rotate = keyframes`
   from {

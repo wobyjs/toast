@@ -4,8 +4,8 @@ import toast, {
     useToasterStore,
     ToastPosition,
 } from '../../src'
-import { $, $$, render, JSX } from 'voby'
-import { Navigate, Router } from 'voby-simple-router'
+import { $, $$, render, type JSX } from 'woby'
+import { Navigate, Router } from 'woby-router'
 
 import Logo from '../assets/dist/logo'
 import Butter1 from '../assets/dist/butter-1'
@@ -106,14 +106,17 @@ export default function Home() {
     const { toasts: allToasts } = useToasterStore()
 
     const shouldFade = $$(allToasts).filter((t) => $$(t.visible)).length && $$(position).includes('top')
+
+    console.log('Home')
+
     return <Router routes={[]}>
         <div className="overflow-x-hidden">
             {/* <NextSeo
-                title={'voby-toast - The Best React Notifications in Town'}
+                title={'woby-toast - The Best React Notifications in Town'}
                 openGraph={{
                     images: [
                         {
-                            url: `https://voby-toast.com/social-image.png`,
+                            url: `https://woby-toast.com/social-image.png`,
                             width: 1200,
                             height: 630,
                         },
@@ -133,7 +136,7 @@ export default function Home() {
                     <div>
                         <Logo
                             role="img"
-                            aria-label="voby-toast"
+                            aria-label="woby-toast"
                             className="relative animate-slide-in transition-all duration-200 -mt-8 md:-mt-4"
                             style={{
                                 willChange: 'filter',
@@ -203,7 +206,7 @@ export default function Home() {
                             data-splitbee-event="Open Link"
                             data-splitbee-event-target="GitHub"
                             onClick={() => { }}
-                            href="https://github.com/timolins/voby-toast"
+                            href="https://github.com/timolins/woby-toast"
                         >
                             <GitHub className="opacity-100" />
                             <span className="flex-1 text-toast-800 text-center">GitHub</span>

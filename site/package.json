@@ -30,9 +30,7 @@
         "@vercel/analytics": "^0.1.5",
         "clsx": "^1.1.1",
         "rehype-slug": "^5.0.1",
-        "goober": "^2.1.10",
-        "voby-toast": "workspace:../",
-        "voby-simple-router": "workspace:../../voby-simple-router"
+        "goober": "^2.1.10"
     },
     "devDependencies": {
         "@tailwindcss/typography": "^0.5.9",
@@ -49,7 +47,8 @@
         "svg2tsx": "workspace:../../svg2tsx",
         "vite-plugin-dts": "^2.3.0",
         "vite-plugin-svgr": "^3.2.0",
-        "voby-simple-router": "workspace:../voby-simple-router",
+        "woby-router": "workspace:../woby-router",
+        "woby-toast": "workspace:../",
         "yargs": "^17.7.2"
     }
 }

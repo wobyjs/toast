@@ -1,13 +1,14 @@
-import { } from 'voby'
-import { Navigate } from 'voby-simple-router'
+import { } from 'woby'
+import { Navigate } from 'woby-router'
 
 export function Footer({ noBadge }: { noBadge?: boolean }) {
+    console.log('Footer')
     return (
         <footer className="container relative justify-center my-8 flex flex-col items-center space-y-4">
             <div className="flex space-x-4">
                 <a
                     className="underline"
-                    href="https://github.com/timolins/voby-toast"
+                    href="https://github.com/timolins/woby-toast"
                 >
                     GitHub
                 </a>

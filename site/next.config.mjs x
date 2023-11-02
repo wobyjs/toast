@@ -8,7 +8,7 @@ const withMDX = nextMdx({
     options: {
         rehypePlugins: [rehypeSlug],
         remarkPlugins: [remarkGfm],
-        providerImportSource: '@mdx-js/voby',
+        providerImportSource: '@mdx-js/woby',
     },
 });
 

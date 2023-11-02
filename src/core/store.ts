@@ -1,4 +1,4 @@
-import { $, $$, Observable, useMemo } from 'voby'
+import { $, $$, Observable, useMemo } from 'woby'
 import { DefaultToastOptions, Toast, ToastType } from './types'
 
 const TOAST_LIMIT = 20

@@ -1,16 +1,17 @@
-import * as React from 'voby'
+import * as React from 'woby'
 import { Toaster } from '../../src'
 // import { NextSeo } from 'next-seo'
-import { Navigate } from 'voby-simple-router'
+import { Navigate } from 'woby-router'
 import { Footer } from './sections/footer'
 import Logo from '../assets/dist/logo-small'
 
 const TableItem = ({ children, href }: { href: React.ObservableMaybe<string>, children?: JSX.Children }) => (
-    <Navigate to={href}>
+    console.log('TableItem')
+    < Navigate to = { href } >
         <a className="rounded px-3 py-1.5 transition-colors duration-200 relative block hover:text-toast-500 text-toast-700">
             {children}
         </a>
-    </Navigate>
+    </Navigate >
 )
 
 const TableHeader = ({ children }: { children?: JSX.Children }) => (
@@ -28,7 +29,7 @@ export default function DocsLayout({ meta, children }) {
                 openGraph={{
                     images: [
                         {
-                            url: `https://voby-toast.com/social-image.png`,
+                            url: `https://woby-toast.com/social-image.png`,
                             width: 1200,
                             height: 630,
                         },
@@ -41,12 +42,12 @@ export default function DocsLayout({ meta, children }) {
                     <Navigate to="/">
                         <Logo
                             className="cursor-pointer"
-                            aria-label="voby-toast Logo"
+                            aria-label="woby-toast Logo"
                         />
                     </Navigate>
                     <a
                         className="flex text-toast-600 underline"
-                        href="https://github.com/timolins/voby-toast"
+                        href="https://github.com/timolins/woby-toast"
                     >
                         GitHub
                     </a>

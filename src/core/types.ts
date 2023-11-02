@@ -1,5 +1,4 @@
-import { Child, Observable, ObservableMaybe } from 'voby'
-import { } from 'voby/dist/types/jsx/types'
+import { Child, Observable, ObservableMaybe, type JSX } from 'woby'
 
 export type ToastType = 'success' | 'error' | 'loading' | 'blank' | 'custom'
 export type ToastPosition =

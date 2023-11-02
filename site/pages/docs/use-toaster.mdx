@@ -1,5 +1,5 @@
 import Layout from '../../components/docs-layout';
-import toast from 'voby-toast';
+import toast from 'woby-toast';
 
 export const meta = {
   title: 'useToaster() API',
@@ -23,7 +23,7 @@ It solves the following problems for you:
 You can import only the core of the library with `voby-toast/headless`. It won't include any styles, dependencies or custom components.
 
 ```jsx
-import { useToaster } from 'voby-toast/headless';
+import { useToaster } from 'woby-toast/headless';
 ```
 
 Be aware: [voby-toast 2.0](/docs/version-2) adds support for **custom render functions**, an easier method to render custom notification components.
@@ -32,14 +32,14 @@ It's recommended to only have one `<Toaster/>` or `useToaster()` in your app at 
 
 ## Usage with React Native
 
-Headless mode is perfectly suited to add notifications to your React Native app. You can check out [this example](<https://snack.expo.io/@timo/voby-toast---usetoaster()---voby-native>).
+Headless mode is perfectly suited to add notifications to your React Native app. You can check out [this example](<https://snack.expo.io/@timo/woby-toast---usetoaster()---voby-native>).
 
 ## Examples
 
 ### Basic Example
 
 ```jsx
-import toast, { useToaster } from 'voby-toast/headless';
+import toast, { useToaster } from 'woby-toast/headless';
 
 const Notifications = () => {
   const { toasts, handlers } = useToaster();
@@ -66,10 +66,10 @@ toast('Hello World');
 
 Instead of mapping over `visibleToasts` we'll use `toasts`, which includes all hidden toasts. We animate them based on `toast.visible`. Toasts will be removed from 1 second after being dismissed, which give us enough time to animate.
 
-You can play with the demo on [CodeSandbox](https://codesandbox.io/s/voby-toast-usetoaster-headless-example-zw7op?file=/src/App.js).
+You can play with the demo on [CodeSandbox](https://codesandbox.io/s/woby-toast-usetoaster-headless-example-zw7op?file=/src/App.js).
 
 ```jsx
-import { useToaster } from 'voby-toast/headless';
+import { useToaster } from 'woby-toast/headless';
 
 const Notifications = () => {
   const { toasts, handlers } = useToaster();

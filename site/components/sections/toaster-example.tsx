@@ -1,4 +1,4 @@
-import { ObservableMaybe, $, $$, Observable } from 'voby'
+import { ObservableMaybe, $, $$, Observable } from 'woby'
 import toast, { ToastPosition } from '../../../src'
 import Arrow from '../../assets/dist/arrow'
 import { Code } from '../code'

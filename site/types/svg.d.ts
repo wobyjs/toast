@@ -1,4 +1,4 @@
-// import * as voby from 'voby'
+// import * as voby from 'woby'
 
 // interface SvgrComponent
 //   extends StatelessComponent<JSX.SVGAttributes<SVGElement>> {}

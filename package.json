@@ -1,12 +1,12 @@
 {
-    "name": "voby-hot-toast",
-    "description": "Smoking hot voby Notifications. Lightweight, customizable and beautiful by default.",
+    "name": "woby-toast",
+    "description": "Smoking hot woby Notifications. Lightweight, customizable and beautiful by default.",
     "version": "2.4.1",
     "author": "Timo Lins",
     "license": "MIT",
-    "repository": "timolins/voby-hot-toast",
+    "repository": "timolins/woby-hot-toast",
     "keywords": [
-        "voby",
+        "woby",
         "notifications",
         "toast",
         "snackbar"
@@ -78,21 +78,21 @@
         "@tailwindcss/typography": "^0.5.10",
         "csstype": "^3.1.0",
         "esbuild-svgr-plugin": "^0.2.0",
-        "glob": "^10.3.3",
+        "glob": "^10.3.10",
         "size-limit": "^7.0.8",
         "svg2tsx": "workspace:../svg2tsx",
         "tailwindcss": "^3.3.3",
-        "vite": "^4.4.8",
+        "vite": "^4.4.11",
         "vite-plugin-dts": "^2.3.0",
-        "vite-plugin-svgr": "^3.2.0",
-        "voby-simple-router": "workspace:../voby-simple-router",
-        "voby-styled": "workspace:../voby-styled",
+        "vite-plugin-svgr": "^3.3.0",
         "yargs": "^17.7.2"
     },
     "dependencies": {
-        "goober": "^2.1.10"
+        "goober": "^2.1.13"
     },
     "peerDependencies": {
-        "voby": "workspace:../woby"
+        "woby-router": "workspace:../woby-router",
+        "woby-styled": "workspace:../woby-styled",
+        "woby": "workspace:../woby"
     }
 }

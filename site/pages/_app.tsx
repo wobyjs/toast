@@ -1,14 +1,15 @@
 import '../styles/tailwind-utils.css'
 import '../styles/main.css'
-import * as React from 'voby'
-import { Navigate } from 'voby-simple-router'
+import * as React from 'woby'
+import { Navigate } from 'woby-router'
 import Head from 'next/head'
-import { Analytics } from '@vercel/analytics/voby'
+import { Analytics } from '@vercel/analytics/woby'
 
 
-import { MDXProvider } from '@mdx-js/voby'
+import { MDXProvider } from '@mdx-js/woby'
 import { Code } from '../components/code'
 
+console.log('const components')
 const components = {
     a: (props) => (
         <Navigate href={props.href}>

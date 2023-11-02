@@ -1,4 +1,5 @@
-import { $, $$, useEffect, CSSProperties, Observable, useMemo, Child, ObservableMaybe } from 'voby'
+import { $, $$, useEffect, CSSProperties, Observable, useMemo, Child, ObservableMaybe, type JSX } from 'woby'
+
 import {
     resolveValue,
     Toast,
@@ -9,7 +10,7 @@ import {
 import { useToaster } from '../core/use-toaster'
 import { prefersReducedMotion } from '../core/utils'
 import { ToastBar } from './toast-bar'
-import { append } from 'voby-styled'
+import { append } from 'woby-styled'
 
 const ToastWrapper = ({ toast, className, style, onHeightUpdate, children, }: ToastWrapperProps) => {
     const ref = $<HTMLDivElement>()

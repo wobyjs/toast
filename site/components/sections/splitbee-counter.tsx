@@ -1,4 +1,4 @@
-import { useEffect, $, $$, Observable, } from 'voby'
+import { useEffect, $, $$, Observable, } from 'woby'
 
 export const useSplitbeeCount = <T extends string>(
     event: T,

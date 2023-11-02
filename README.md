@@ -1,19 +1,15 @@
-<a href="https://voby-toast.com/"><img alt="voby-toast - Try it out" src="https://github.com/timolins/voby-toast/raw/main/assets/header.svg"/></a>
+# Woby-Toash
 
-<div align="center">
-    <img src="https://badgen.net/npm/v/voby-toast" alt="NPM Version" />
-  <img src="https://badgen.net/bundlephobia/minzip/voby-toast" alt="minzipped size"/>
-    <img src="https://github.com/timolins/voby-toast/workflows/CI/badge.svg" alt="Build Status" />
-</a>
-</div>
+## Ported from [react-hot-toast](https://react-hot-toast.com/)
+
 <br />
 <div align="center"><strong>Smoking hot  Notifications for React.</strong></div>
 <div align="center"> Lightweight, customizable and beautiful by default.</div>
 <br />
 <div align="center">
-<a href="https://voby-toast.com/">Website</a> 
+<a href="https://woby-toast.com/">Website</a> 
 <span> · </span>
-<a href="https://voby-toast.com/docs">Documentation</a> 
+<a href="https://woby-toast.com/docs">Documentation</a> 
 <span> · </span>
 <a href="https://twitter.com/timolins">Twitter</a>
 </div>
@@ -32,20 +28,20 @@
 - ⏳ **Promise API** - _Automatic loader from a promise_
 - 🕊 **Lightweight** - _less than 5kb including styles_
 - ✅ **Accessible**
-- 🤯 **Headless Hooks** - _Create your own with [`useToaster()`](https://voby-toast.com/docs/use-toaster)_
+- 🤯 **Headless Hooks** - _Create your own with [`useToaster()`](https://woby-toast.com/docs/use-toaster)_
 
 ## Installation
 
 #### With yarn
 
 ```sh
-yarn add voby-toast
+yarn add woby-toast
 ```
 
 #### With NPM
 
 ```sh
-npm install voby-toast
+npm install woby-toast
 ```
 
 ## Getting Started
@@ -53,7 +49,7 @@ npm install voby-toast
 Add the Toaster to your app first. It will take care of rendering all notifications emitted. Now you can trigger `toast()` from anywhere!
 
 ```jsx
-import toast, { Toaster } from 'voby-toast';
+import toast, { Toaster } from 'woby-toast';
 
 const notify = () => toast('Here is your toast.');
 
@@ -66,7 +62,3 @@ const App = () => {
   );
 };
 ```
-
-## Documentation
-
-Find the full API reference on [official documentation](https://voby-toast.com/docs).

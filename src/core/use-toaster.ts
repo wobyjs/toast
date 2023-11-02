@@ -1,4 +1,4 @@
-import { useEffect, $, $$, ObservableMaybe, useMemo, Observable, ObservableReadonly } from 'voby'
+import { useEffect, $, $$, ObservableMaybe, useMemo, Observable, ObservableReadonly } from 'woby'
 import { useStore } from './store'
 import { toast } from './toast'
 import { DefaultToastOptions, Toast, ToastPosition } from './types'

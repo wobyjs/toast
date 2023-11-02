@@ -1,11 +1,11 @@
-import React from 'voby'
+import React from 'woby'
 import {
     render,
     screen,
     act,
     waitFor,
     fireEvent,
-} from '@testing-library/voby'
+} from '@testing-library/woby'
 
 import toast, { resolveValue, Toaster, ToastIcon } from '../src'
 import { TOAST_EXPIRE_DISMISS_DELAY, defaultTimeouts } from '../src/core/store'

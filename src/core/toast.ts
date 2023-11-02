@@ -8,8 +8,8 @@ import {
 } from './types'
 import { genId } from './utils'
 import { useStore } from './store'
-import { Child, Observable, ObservableMaybe } from 'voby'
-import { $, $$ } from 'voby'
+import { Child, Observable, ObservableMaybe } from 'woby'
+import { $, $$ } from 'woby'
 
 const { toasts, addOrUpdate, dismiss, remove, } = useStore()
 
