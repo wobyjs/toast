@@ -5,14 +5,6 @@
 <br />
 <div align="center"><strong>Smoking hot  Notifications for React.</strong></div>
 <div align="center"> Lightweight, customizable and beautiful by default.</div>
-<br />
-<div align="center">
-<a href="https://woby-toast.com/">Website</a> 
-<span> · </span>
-<a href="https://woby-toast.com/docs">Documentation</a> 
-<span> · </span>
-<a href="https://twitter.com/timolins">Twitter</a>
-</div>
 
 <br />
 
