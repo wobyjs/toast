@@ -8,8 +8,6 @@ import { ErrorIcon, ErrorTheme } from './error'
 import { LoaderIcon, LoaderTheme } from './loader'
 import { CheckmarkIcon, CheckmarkTheme } from './checkmark'
 
-// import type { JSX } from 'woby/jsx-runtime'
-
 const StatusWrapper = tw('div')`absolute`
 
 const IndicatorWrapper = tw('div')`relative flex justify-center items-center min-w-[20px] min-h-[20px]`
@@ -17,7 +15,7 @@ const IndicatorWrapper = tw('div')`relative flex justify-center items-center min
 const enter = keyframes`
 from {
   transform: scale(0.6);
-  opacity: 0.4;
+  opacity: 0.4;ww
 }
 to {
   transform: scale(1);

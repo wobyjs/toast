@@ -3,9 +3,7 @@
 //     Language,
 //     PrismTheme,
 // } from 'prism-react-renderer'
-import { ObservableMaybe, $, $$ } from 'woby'
-
-import type { JSX } from 'woby/jsx-runtime'
+import { ObservableMaybe, $, $$, type JSX } from 'woby'
 
 // const theme: PrismTheme = {
 //     plain: {
