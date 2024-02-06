@@ -1,7 +1,7 @@
 {
     "name": "woby-toast",
     "description": "Smoking hot woby Notifications. Lightweight, customizable and beautiful by default.",
-    "version": "2.4.2",
+    "version": "2.4.4",
     "license": "MIT",
     "repository": "https://github.com/wongchichong/woby-toast",
     "keywords": [
@@ -79,7 +79,7 @@
         "esbuild-svgr-plugin": "^0.2.0",
         "glob": "^10.3.10",
         "size-limit": "^7.0.8",
-        "svg2tsx": "workspace:../svg2tsx",
+        "svg2tsx": "workspace:^",
         "tailwindcss": "^3.4.1",
         "vite": "^4.5.2",
         "vite-plugin-dts": "^2.3.0",
@@ -90,8 +90,8 @@
         "goober": "^2.1.14"
     },
     "peerDependencies": {
-        "woby": "workspace:../woby",
-        "woby-router": "workspace:../woby-router",
-        "woby-styled": "workspace:../woby-styled"
+        "woby": "workspace:^",
+        "woby-router": "workspace:^",
+        "woby-styled": "workspace:^"
     }
 }
