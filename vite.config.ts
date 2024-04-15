@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import path from 'path'
-import dts from 'vite-plugin-dts'
-import { svgrPlugin } from 'esbuild-svgr-plugin'
+// import dts from 'vite-plugin-dts'
+// import { svgrPlugin } from 'esbuild-svgr-plugin'
 
 // import svgr from "vite-plugin-svgr"
 
@@ -11,12 +11,12 @@ const config = defineConfig({
         lib: {
             entry: ["./src/index.ts"],
             name: "woby-toast",
-            formats: ['cjs', 'es', 'umd'],
+            formats: [/*'cjs', '*/'es'/*, 'umd'*/],
             fileName: (format: string, entryName: string) => `${entryName}.${format}.js`
         },
         sourcemap: true,
         rollupOptions: {
-            external: ['woby', 'woby/jsx-runtime', 'oby'],
+            external: ['woby', 'woby/jsx-runtime', 'oby', 'woby-styled', 'woby-router'],
             output: {
                 globals: {
                     'woby': 'woby',
@@ -30,7 +30,7 @@ const config = defineConfig({
     },
     plugins: [
         // svgr({ exportAsDefault: true }),
-        dts({ entryRoot: './src', outputDir: './dist/types' })
+        // dts({ entryRoot: './src', outputDir: './dist/types' })
     ],
     resolve: {
         alias: {

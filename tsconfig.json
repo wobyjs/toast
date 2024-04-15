@@ -53,7 +53,7 @@
     },
     "exclude": [
         "node_modules",
-        "vite.config.ts",
+        "vite.*.*ts",
         "dist*",
         "test/**"
     ],

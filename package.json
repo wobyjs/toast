@@ -18,15 +18,19 @@
         "registry": "https://registry.npmjs.org/"
     },
     "scripts": {
+        "git": "git add . && git commit -m \"Bump version\" && git push",
+        "bump": "pnpm version patch",
+        "npmjs": "pnpm publish",
+        "release": "run-s -c git bump npmjs",
         "//lib": "babel src/rodal.js --out-file lib/rodal.js && BABEL_MODULE=es babel src/rodal.js --out-file lib/rodal.esm.js && cp src/rodal.css lib",
         "//test": "npm run lib",
         "//release": "npm run build && npm run lib && npm publish",
         "css:watch": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
         "css": "tailwindcss -i ./src/input.css -o ./dist/output.css",
-        "declaration": "tsc --build --force --declaration --emitDeclarationOnly --verbose",
-        "declaration:watch": "tsc --build --force --declaration --emitDeclarationOnly --verbose --watch",
+        "declaration": "tsc --build --force --declaration --emitDeclarationOnly --declarationMap  --verbose",
+        "declaration:watch": "tsc --build --force --declaration --emitDeclarationOnly --declarationMap --verbose --watch",
         "watch": "run-p build:watch css:watch",
-        "build": "run-s css build:vite css",
+        "build": "run-s css build:vite css declaration",
         "build:web": "vite build --config=vite.config.web.ts --force --mode production",
         "web": "vite preview --config=vite.config.web.ts --host",
         "dev:only": "vite --config=vite.config.web.ts --force --mode dev --host",
@@ -73,25 +77,24 @@
         }
     ],
     "devDependencies": {
-        "@size-limit/preset-small-lib": "^7.0.8",
+        "@size-limit/preset-small-lib": "^11.1.2",
         "@tailwindcss/typography": "^0.5.10",
         "csstype": "^3.1.3",
         "esbuild-svgr-plugin": "^0.2.0",
         "glob": "^10.3.10",
-        "size-limit": "^7.0.8",
-        "svg2tsx": "workspace:^",
-        "tailwindcss": "^3.4.1",
-        "vite": "^4.5.2",
-        "vite-plugin-dts": "^2.3.0",
-        "vite-plugin-svgr": "^3.3.0",
+        "size-limit": "^11.1.2",
+        "svg2tsx": "workspace:../svg2tsx",
+        "tailwindcss": "^3.4.3",
+        "vite": "^5.2.8",
+        "vite-plugin-svgr": "^4.2.0",
         "yargs": "^17.7.2"
     },
     "dependencies": {
-        "goober": "^2.1.14"
+        "goober": "^2.1.14",
+        "typescript": "5.4.4"
     },
     "peerDependencies": {
-        "woby": "workspace:^",
-        "woby-router": "workspace:^",
-        "woby-styled": "workspace:^"
+        "woby": "workspace:../woby",
+        "woby-styled": "workspace:../woby-styled"
     }
 }

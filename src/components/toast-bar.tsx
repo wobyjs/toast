@@ -71,7 +71,7 @@ export const ToastBar = ({ toast, position, style, children }: ToastBarProps) =>
     </Message>
 
     return <ToastBarBase
-        className={() => $$(toast).className}
+        className={(() => $$(toast).className) as any}
         style={animationStyle}
     >
         {() => typeof children === 'function' ? (

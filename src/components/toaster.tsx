@@ -87,7 +87,8 @@ export const Toaster = ({ reverseOrder, position = $('top-center'), toastOptions
         ids[t.id] = append(<ToastWrapper
             toast={t}
             onHeightUpdate={updateHeight}
-            className={() => $$(t.visible) ? activeClass : ''}
+            /** @ts-ignore */
+            class={() => $$(t.visible) ? activeClass : ''}
             style={positionStyle}
         >
             {/** @ts-ignore */}

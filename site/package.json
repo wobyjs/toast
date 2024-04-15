@@ -9,8 +9,8 @@
         "//release": "npm run build && npm run lib && npm publish",
         "css:watch": "tailwindcss -i ./pages/input.css -o ./dist/output.css --watch",
         "css": "tailwindcss -i ./pages/input.css -o ./dist/output.css",
-        "declaration": "tsc --build --force --declaration --emitDeclarationOnly --verbose",
-        "declaration:watch": "tsc --build --force --declaration --emitDeclarationOnly --verbose --watch",
+        "declaration": "tsc --build --force --declaration --emitDeclarationOnly --declarationMap  --verbose",
+        "declaration:watch": "tsc --build --force --declaration --emitDeclarationOnly --declarationMap  --verbose --watch",
         "watch": "run-p build:watch css:watch",
         "build": "run-s css build:vite css",
         "build:web": "vite build --config=vite.config.web.ts --force --mode production",
@@ -47,7 +47,7 @@
         "svg2tsx": "workspace:../../svg2tsx",
         "vite-plugin-dts": "^2.3.0",
         "vite-plugin-svgr": "^3.2.0",
-        "woby-router": "workspace:^",
+        "woby-router": "workspace:*",
         "woby-toast": "workspace:../",
         "yargs": "^17.7.2"
     }
