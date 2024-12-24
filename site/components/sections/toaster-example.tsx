@@ -59,7 +59,7 @@ export const ToasterExample = ({ position, reverse }: {
     const renderPosition = (p: ObservableMaybe<ToastPosition>) => (
         <button
             id="p"
-            className={[
+            class={[
                 'rounded-xl text-center text-xs md:text-sm py-2 px- flex items-center justify-center cursor-pointer flex-col md:flex-row',
                 () => $$(position) === p
                     ? 'bg-toast-900 text-toast-100 '
@@ -82,26 +82,26 @@ export const ToasterExample = ({ position, reverse }: {
                 position($$(p))
             }}
         >
-            <span className="mr-2">{p}</span>
+            <span class="mr-2">{p}</span>
         </button>
     )
 
     return (
-        <section className="flex flex-col md:grid grid-cols-1 md:grid-cols-3 gap-2">
+        <section class="flex flex-col md:grid grid-cols-1 md:grid-cols-3 gap-2">
             <Code
                 snippet={() => `<Toaster
   position="${$$(position)}"
   reverseOrder={${$$(reverse)}}
 />`}
             />
-            <div className="order-first md:order-none col-span-2 grid grid-cols-3 justify-between bg-toast-100 rounded-xl gap-x-2 gap-y-4 p-2 md:p-4">
+            <div class="order-first md:order-none col-span-2 grid grid-cols-3 justify-between bg-toast-100 rounded-xl gap-x-2 gap-y-4 p-2 md:p-4">
                 {positions.map((p) => renderPosition(p))}
             </div>
-            <div className="col-start-2 col-span-2 flex justify-center my-4">
+            <div class="col-start-2 col-span-2 flex justify-center my-4">
                 <EmojiButton
                     emoji={
                         <Arrow
-                            className={[
+                            class={[
                                 'transform transition-transform',
                                 () => (($$(position).includes('bottom') && !$$(reverse)) ||
                                     ($$(position).includes('top') && $$(reverse))) &&

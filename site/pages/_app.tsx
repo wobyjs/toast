@@ -18,10 +18,10 @@ const components = {
     ),
     code: (props) =>
         props.className ? (
-            <Code className={props.className} snippet={props.children} />
+            <Code class={props.className} snippet={props.children} />
         ) : (
             <code
-                className="bg-toast-300 py-1 my-0.5 px-1 rounded bg-opacity-40"
+                class="bg-toast-300 py-1 my-0.5 px-1 rounded bg-opacity-40"
                 {...props}
             />
         ),

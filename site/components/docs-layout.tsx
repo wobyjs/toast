@@ -8,21 +8,21 @@ import Logo from '../assets/dist/logo-small'
 const TableItem = ({ children, href }: { href: React.ObservableMaybe<string>, children?: JSX.Children }) => (
     console.log('TableItem')
     < Navigate to = { href } >
-        <a className="rounded px-3 py-1.5 transition-colors duration-200 relative block hover:text-toast-500 text-toast-700">
+        <a class="rounded px-3 py-1.5 transition-colors duration-200 relative block hover:text-toast-500 text-toast-700">
             {children}
         </a>
     </Navigate >
 )
 
 const TableHeader = ({ children }: { children?: JSX.Children }) => (
-    <span className="px-3 mt-3 mb-1 text-sm font-semibold tracking-wide text-toast-900 uppercase">
+    <span class="px-3 mt-3 mb-1 text-sm font-semibold tracking-wide text-toast-900 uppercase">
         {children}
     </span>
 )
 
 export default function DocsLayout({ meta, children }) {
     return (
-        <div className="bg-toast-50 bg-opacity-50 min-h-screen flex flex-col">
+        <div class="bg-toast-50 bg-opacity-50 min-h-screen flex flex-col">
             {/* <NextSeo
                 titleTemplate="%s - voby-toast"
                 title={meta.title}
@@ -37,25 +37,25 @@ export default function DocsLayout({ meta, children }) {
                 }}
             /> */}
 
-            <div className="flex-1 mx-auto px-2 max-w-4xl w-full">
-                <header className=" col-start-1 col-end-6 mt-12 mb-16 px-2 flex justify-between items-center">
+            <div class="flex-1 mx-auto px-2 max-w-4xl w-full">
+                <header class=" col-start-1 col-end-6 mt-12 mb-16 px-2 flex justify-between items-center">
                     <Navigate to="/">
                         <Logo
-                            className="cursor-pointer"
+                            class="cursor-pointer"
                             aria-label="woby-toast Logo"
                         />
                     </Navigate>
                     <a
-                        className="flex text-toast-600 underline"
+                        class="flex text-toast-600 underline"
                         href="https://github.com/timolins/woby-toast"
                     >
                         GitHub
                     </a>
                 </header>
 
-                <div className="md:flex md:space-x-4">
-                    <nav className="font-medium rounded-lg ">
-                        <div className="flex flex-col mb-8 sticky top-0">
+                <div class="md:flex md:space-x-4">
+                    <nav class="font-medium rounded-lg ">
+                        <div class="flex flex-col mb-8 sticky top-0">
                             <TableHeader>Overview</TableHeader>
 
                             <TableItem href="/docs">Get Started</TableItem>
@@ -76,7 +76,7 @@ export default function DocsLayout({ meta, children }) {
                         </div>
                     </nav>
 
-                    <main className="col-span-4 w-full prose prose-toast text-toast-900 flex-1">
+                    <main class="col-span-4 w-full prose prose-toast text-toast-900 flex-1">
                         {children}
                     </main>
                 </div>

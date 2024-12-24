@@ -1,4 +1,4 @@
-import { $, $$, Child, useMemo, type JSX } from 'woby'
+import React, { $, $$, Child, useMemo, type JSX } from 'woby'
 import { tw, keyframes } from 'woby-styled'
 
 import { Toast, ToastPosition, resolveValue } from '../core/types'
@@ -71,7 +71,7 @@ export const ToastBar = ({ toast, position, style, children }: ToastBarProps) =>
     </Message>
 
     return <ToastBarBase
-        className={(() => $$(toast).className) as any}
+        class={(() => $$(toast).className) as any}
         style={animationStyle}
     >
         {() => typeof children === 'function' ? (

@@ -23,9 +23,9 @@ import '../dist/output.css'
 const version = packageInfo.version
 
 const Feature = ({ children }: { children?: JSX.Children }) => (
-    <div className="flex gap-1 items-center">
+    <div class="flex gap-1 items-center">
         <Checkmark />
-        <span className="font-bold">{children}</span>
+        <span class="font-bold">{children}</span>
     </div>
 )
 
@@ -35,28 +35,28 @@ const Step = (props: {
     subTitle: string
     code: JSX.Element
 }) => (
-    <div className="flex flex-col gap-1 items-center">
-        <div className="h-6 w-6 mb-2 text-sm rounded-full bg-toast-900 text-toast-50 flex items-center justify-center">
+    <div class="flex flex-col gap-1 items-center">
+        <div class="h-6 w-6 mb-2 text-sm rounded-full bg-toast-900 text-toast-50 flex items-center justify-center">
             {props.count}
         </div>
-        <div className="font-bold">{props.title}</div>
-        <div className="text-red-700 text-sm">{props.subTitle}</div>
-        <code className="mt-2 border border-toast-200 py-2 px-4 rounded font-bold bg-white w-full text-center">
+        <div class="font-bold">{props.title}</div>
+        <div class="text-red-700 text-sm">{props.subTitle}</div>
+        <code class="mt-2 border border-toast-200 py-2 px-4 rounded font-bold bg-white w-full text-center">
             {props.code}
         </code>
     </div>
 )
 
 const Steps = () => (
-    <div className="grid  grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8 my-12">
+    <div class="grid  grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8 my-12">
         <Step
             count={1}
             title="Install package"
             subTitle="It weighs less than 5kb"
             code={
                 <code>
-                    <span className="text-toast-600">yarn add</span>{' '}
-                    <span className="text-toast-800">voby-toast</span>
+                    <span class="text-toast-600">yarn add</span>{' '}
+                    <span class="text-toast-800">voby-toast</span>
                 </code>
             }
         ></Step>
@@ -66,9 +66,9 @@ const Steps = () => (
             subTitle="Make sure it's placed at the top"
             code={
                 <>
-                    <span className="text-toast-600">{'<div>'}</span>
-                    <span className="text-toast-800">{'<Toaster/>'}</span>
-                    <span className="text-toast-600">{'</div>'}</span>
+                    <span class="text-toast-600">{'<div>'}</span>
+                    <span class="text-toast-800">{'<Toaster/>'}</span>
+                    <span class="text-toast-600">{'</div>'}</span>
                 </>
             }
         ></Step>
@@ -78,8 +78,8 @@ const Steps = () => (
             subTitle="Call it from anywhere"
             code={
                 <>
-                    <span className="text-toast-600">{'toast'}</span>
-                    <span className="text-toast-800">{'("Hello World")'}</span>
+                    <span class="text-toast-600">{'toast'}</span>
+                    <span class="text-toast-800">{'("Hello World")'}</span>
                 </>
             }
         ></Step>
@@ -87,7 +87,7 @@ const Steps = () => (
 )
 
 const Features = () => (
-    <div className="my-12 grid gap-x-8 gap-y-5 grid-cols-2 md:grid-cols-3">
+    <div class="my-12 grid gap-x-8 gap-y-5 grid-cols-2 md:grid-cols-3">
         <Feature>Hot by default</Feature>
         <Feature>Easy to use</Feature>
         <Feature>Accessible</Feature>
@@ -110,7 +110,7 @@ export default function Home() {
     console.log('Home')
 
     return <Router routes={[]}>
-        <div className="overflow-x-hidden">
+        <div class="overflow-x-hidden">
             {/* <NextSeo
                 title={'woby-toast - The Best React Notifications in Town'}
                 openGraph={{
@@ -124,10 +124,10 @@ export default function Home() {
                 }}
                 description="Add beautiful notifications to your React app with voby-toast. Lightweight. Smoking hot by default."
             /> */}
-            <header className="bg-gradient-to-b from-toast-50 to-white bg-opacity-10">
-                <div className="container  flex flex-col items-center relative">
+            <header class="bg-gradient-to-b from-toast-50 to-white bg-opacity-10">
+                <div class="container  flex flex-col items-center relative">
                     <Butter1
-                        className="absolute -left-24 md:left-24 transition-opacity duration-200"
+                        class="absolute -left-24 md:left-24 transition-opacity duration-200"
                         style={{
                             opacity: shouldFade ? 0.5 : 1,
                         }}
@@ -137,7 +137,7 @@ export default function Home() {
                         <Logo
                             role="img"
                             aria-label="woby-toast"
-                            className="relative animate-slide-in transition-all duration-200 -mt-8 md:-mt-4"
+                            class="relative animate-slide-in transition-all duration-200 -mt-8 md:-mt-4"
                             style={{
                                 willChange: 'filter',
                                 opacity: shouldFade ? 0.2 : 1,
@@ -145,20 +145,20 @@ export default function Home() {
                             }}
                         />
                     </div>
-                    <div className="text-center my-12 relative duration-200">
-                        <h1 className="text-3xl md:text-4xl animate-enter font-bold text-toast-900">
+                    <div class="text-center my-12 relative duration-200">
+                        <h1 class="text-3xl md:text-4xl animate-enter font-bold text-toast-900">
                             The Best Toast in Town.
                         </h1>
-                        <h2 className="text-xl md:text-2xl font-bold text-toast-600 mt-2">
+                        <h2 class="text-xl md:text-2xl font-bold text-toast-600 mt-2">
                             Smoking hot React notifications.
                         </h2>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-4 rounded-2xl bg-toast-200 p-4 w-full max-w-lg">
+                    <div class="grid md:grid-cols-2 gap-4 rounded-2xl bg-toast-200 p-4 w-full max-w-lg">
                         <button
                             data-splitbee-event="Trigger Toast"
                             data-splitbee-event-example="CTA"
-                            className={[
+                            class={[
                                 'rounded-lg font-bold gap-4 flex bg-gradient-to-b from-white to-toast-200 shadow-button text-center',
                                 'py-4 px-6',
                                 'active:translate-y-0.5 active:shadow-button-active active:bg-gray-100 transform',
@@ -193,10 +193,10 @@ export default function Home() {
                             }}
                         >
                             <div>🛎 </div>
-                            <span className="flex-1 mr-2">Make me a toast</span>
+                            <span class="flex-1 mr-2">Make me a toast</span>
                         </button>
                         <a
-                            className={[
+                            class={[
                                 'rounded-lg flex font-bold bg-white py-4 px-6 shadow-button  text-toast-800',
                                 'active:translate-y-0.5 active:shadow-button-active transform'
                             ]}
@@ -208,13 +208,13 @@ export default function Home() {
                             onClick={() => { }}
                             href="https://github.com/timolins/woby-toast"
                         >
-                            <GitHub className="opacity-100" />
-                            <span className="flex-1 text-toast-800 text-center">GitHub</span>
+                            <GitHub class="opacity-100" />
+                            <span class="flex-1 text-toast-800 text-center">GitHub</span>
                         </a>
                     </div>
-                    <div className="text-toast-600 my-2">
+                    <div class="text-toast-600 my-2">
                         <Navigate to="/docs">
-                            <a className="underline">Documentation</a>
+                            <a class="underline">Documentation</a>
                         </Navigate>
                         {' · '}
                         <span>v{version}</span>
@@ -222,13 +222,13 @@ export default function Home() {
 
                     <Features />
                     <Steps />
-                    <div className="w-full max-w-4xl">
-                        <div className="my-14">
-                            <h2 className="ml-5 text-2xl font-bold">Examples</h2>
+                    <div class="w-full max-w-4xl">
+                        <div class="my-14">
+                            <h2 class="ml-5 text-2xl font-bold">Examples</h2>
                             <ToastExample />
                         </div>
-                        <div className="my-14">
-                            <h2 className="ml-5 mr-5 mb-4 text-2xl font-bold">
+                        <div class="my-14">
+                            <h2 class="ml-5 mr-5 mb-4 text-2xl font-bold">
                                 Change Position
                             </h2>
 
@@ -242,8 +242,8 @@ export default function Home() {
             </header>
             <SplitbeeCounter />
             <Toaster position={position} reverseOrder={reverse} toastOptions={{}} />
-            <div className="container flex justify-end -mt-10 pointer-events-none">
-                <Butter2 className="transform translate-x-20" />
+            <div class="container flex justify-end -mt-10 pointer-events-none">
+                <Butter2 class="transform translate-x-20" />
             </div>
             <Footer noBadge />
         </div>

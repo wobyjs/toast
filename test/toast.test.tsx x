@@ -251,7 +251,7 @@ test('custom toaster renderer', async () => {
         <>
             <Toaster>
                 {(t) => (
-                    <div className="custom-toast">
+                    <div class="custom-toast">
                         <ToastIcon toast={t} />
                         {resolveValue(t.message, t)}
                     </div>
@@ -284,7 +284,7 @@ test('pause toast', async () => {
         <>
             <Toaster>
                 {(t) => (
-                    <div className="custom-toast">
+                    <div class="custom-toast">
                         <ToastIcon toast={t} />
                         {resolveValue(t.message, t)}
                     </div>

@@ -114,7 +114,7 @@ export const Code = (props: { snippet: ObservableMaybe<string>, /* language?: Ob
     //     >
     //         {({ className, style, tokens, getLineProps, getTokenProps }) => (
     //             <pre
-    //                 className={[
+    //                 class={[
     //                     props.className,
     //                     className,
     //                     'h-full w-full rounded-lg p-4 overflow-x-auto flex flex-col items justify-center'

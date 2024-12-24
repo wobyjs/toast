@@ -32,7 +32,7 @@ const ToastWrapper = ({ toast, className, style, onHeightUpdate, children, }: To
 
         return () => o.disconnect()
     })
-    return <div ref={ref} className={className} style={style}>
+    return <div ref={ref} class={className} style={style}>
         {children}
     </div>
 }
@@ -115,9 +115,9 @@ export const Toaster = ({ reverseOrder, position = $('top-center'), toastOptions
             pointerEvents: 'none',
             ...containerStyle,
         }}
-        className={containerClassName}
-        onMouseEnter={handlers.startPause}
-        onMouseLeave={handlers.endPause}
+        class={containerClassName}
+        onPointerEnter={handlers.startPause}
+        onPointerLeave={handlers.endPause}
     >
         {/* {() => $$(toasts).map((t) => {
             if (ids.get(t)) {
@@ -137,7 +137,7 @@ export const Toaster = ({ reverseOrder, position = $('top-center'), toastOptions
             const r = <ToastWrapper
                 toast={t}
                 onHeightUpdate={handlers.updateHeight}
-                className={() => $$(t.visible) ? activeClass : ''}
+                class={() => $$(t.visible) ? activeClass : ''}
                 style={positionStyle}
             >
                 {t.type === 'custom' ? resolveValue(t.message, t) : children ? children(t) : <ToastBar toast={t} position={toastPosition} />}

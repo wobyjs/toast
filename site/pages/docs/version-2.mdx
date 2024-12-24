@@ -11,23 +11,23 @@ export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
 
 This release is all about **flexibility**. It allows you to create the notification system of your dreams, even simpler. Before we dig deeper into the new APIs, check out what's included in this release:
 
-<div className="">
-<span style={{ margin: '10px' }}>✨</span> <a href="#introducing-toastcustom" className="font-semibold">toast.custom()</a> <span className="">- Dispatch components as toast</span>
+<div class="">
+<span style={{ margin: '10px' }}>✨</span> <a href="#introducing-toastcustom" class="font-semibold">toast.custom()</a> <span class="">- Dispatch components as toast</span>
 <br />
 
 <span style={{ margin: '10px' }}>👀</span>
-<a href="#better-accessibility" className="font-semibold">Reduced-motion support</a> <span className="">- Automatically adapts to system preference</span>
+<a href="#better-accessibility" class="font-semibold">Reduced-motion support</a> <span class="">- Automatically adapts to system preference</span>
 <br />
 
 <span style={{ margin: '10px' }}>🔀</span>
-<a href="#per-toast-positioning" className="font-semibold">Individually position toasts</a> <span className=""> </span>
+<a href="#per-toast-positioning" class="font-semibold">Individually position toasts</a> <span class=""> </span>
 <br />
 
 <span style={{ margin: '10px' }}>🧈</span>
-<a href="#smoother-exit-animation" className="font-semibold">Smoother exit animations</a> <span className=""></span>
+<a href="#smoother-exit-animation" class="font-semibold">Smoother exit animations</a> <span class=""></span>
 <br />
 
-<span style={{ margin: '10px' }}>⚙️</span> <a href="#custom-renderer-api" className="font-semibold">Custom Renderer API</a> <span className="">- Supply your own render function</span>
+<span style={{ margin: '10px' }}>⚙️</span> <a href="#custom-renderer-api" class="font-semibold">Custom Renderer API</a> <span class="">- Supply your own render function</span>
 </div>
 
 As well as a many [other improvements and fixes](#changelog).
@@ -45,7 +45,7 @@ toast.custom(<div>Minimal Example</div>);
 // Tailwind Example
 toast.custom((t) => (
   <div
-    className={`bg-white px-6 py-4 shadow-md rounded-full ${
+    class={`bg-white px-6 py-4 shadow-md rounded-full ${
       t.visible ? 'animate-enter' : 'animate-leave'
     }`}
   >
@@ -54,18 +54,18 @@ toast.custom((t) => (
 ));
 ```
 
-<div className="w-full relative">
+<div class="w-full relative">
   <button
     onClick={() => 
       toast.custom((t) => (
         <div
-          className={`bg-white px-6 py-4 shadow-md rounded-full ${
+          class={`bg-white px-6 py-4 shadow-md rounded-full ${
             t.visible ? 'animate-enter' : 'animate-leave'
           }`}
         >Hello from TailwindCSS! 👋</div>
       ))
     }
-    className="bg-toast-800 text-toast-100 whitespace-nowrap py-1 px-3 shadow-md rounded-lg absolute mt-[-4.5rem] -ml-2 transform -translate-x-full left-full">Run Example</button>
+    class="bg-toast-800 text-toast-100 whitespace-nowrap py-1 px-3 shadow-md rounded-lg absolute mt-[-4.5rem] -ml-2 transform -translate-x-full left-full">Run Example</button>
 </div>
 
 In the example above, we pass in a **function that returns JSX**. This allows us to access the current toast state and toggle between the enter and exit animation.
@@ -90,9 +90,9 @@ toast.success('Always at the bottom', {
 });
 ```
 
-<div className="w-full relative">
+<div class="w-full relative">
   <button
-    className="bg-toast-800 text-toast-100 whitespace-nowrap py-1 px-3 shadow-md rounded-lg absolute mt-[-4.5rem] -ml-2 transform -translate-x-full left-full"
+    class="bg-toast-800 text-toast-100 whitespace-nowrap py-1 px-3 shadow-md rounded-lg absolute mt-[-4.5rem] -ml-2 transform -translate-x-full left-full"
     onClick={() => {
       toast.success('Always at the bottom', {
         position: 'bottom-center',

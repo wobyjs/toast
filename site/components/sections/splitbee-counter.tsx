@@ -38,16 +38,16 @@ export const SplitbeeCounter = () => {
     const letters = count.toString().split('')
 
     return (
-        <div className="flex items-center justify-center p-4 flex-col gap-3 mt-4">
-            <div className="font-semibold text-toast-900 rounded text-lg">
+        <div class="flex items-center justify-center p-4 flex-col gap-3 mt-4">
+            <div class="font-semibold text-toast-900 rounded text-lg">
                 Toasts made on this website so far
             </div>
             <div
-                className={['grid gap-2 grid-flow-col', $$(count) === 0 && 'opacity-0']}
+                class={['grid gap-2 grid-flow-col', $$(count) === 0 && 'opacity-0']}
             >
                 {letters.map((l, i) => (
                     <div
-                        className={[
+                        class={[
                             'animate-enter',
                             'bg-toast-100 rounded p-4 text-lg font-bold font-mono'
                         ]}
@@ -57,10 +57,10 @@ export const SplitbeeCounter = () => {
                     </div>
                 ))}
             </div>
-            <div className="text-toast-600">
+            <div class="text-toast-600">
                 ⚡️ Real-time analytics by{' '}
                 <a
-                    className="underline"
+                    class="underline"
                     data-splitbee-event="Click Splitbee Analytics"
                     data-splitbee-event-location="Counter"
                     href="https://splitbee.io/?ref=rht-realtime"
