@@ -1,4 +1,4 @@
-import { styled, keyframes } from 'woby-styled'
+import { styled, keyframes } from '@woby/styled'
 
 const circleAnimation = keyframes`
 from {
@@ -31,8 +31,8 @@ to {
 }`
 
 export interface ErrorTheme {
-    primary?: string
-    secondary?: string
+  primary?: string
+  secondary?: string
 }
 
 export const ErrorIcon = styled('div')`

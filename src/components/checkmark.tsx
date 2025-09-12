@@ -1,4 +1,4 @@
-import { styled, keyframes } from 'woby-styled'
+import { styled, keyframes } from '@woby/styled'
 
 const circleAnimation = keyframes`
 from {
@@ -27,8 +27,8 @@ const checkmarkAnimation = keyframes`
 }`
 
 export interface CheckmarkTheme {
-    primary?: string
-    secondary?: string
+  primary?: string
+  secondary?: string
 }
 
 export const CheckmarkIcon = styled('div')`

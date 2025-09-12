@@ -10,7 +10,7 @@ import {
 import { useToaster } from '../core/use-toaster'
 import { prefersReducedMotion } from '../core/utils'
 import { ToastBar } from './toast-bar'
-import { append } from 'woby-styled'
+import { append } from '@woby/styled'
 
 const ToastWrapper = ({ toast, className, style, onHeightUpdate, children, }: ToastWrapperProps) => {
     const ref = $<HTMLDivElement>()

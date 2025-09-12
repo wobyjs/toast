@@ -5,7 +5,7 @@ import toast, {
     ToastPosition,
 } from '../../src'
 import { $, $$, render, type JSX } from 'woby'
-import { Navigate, Router } from 'woby-router'
+import { Navigate, Router } from '@woby/router'
 
 import Logo from '../assets/dist/logo'
 import Butter1 from '../assets/dist/butter-1'
@@ -116,7 +116,7 @@ export default function Home() {
                 openGraph={{
                     images: [
                         {
-                            url: `https://woby-toast.com/social-image.png`,
+                            url: `https://toast.com/social-image.png`,
                             width: 1200,
                             height: 630,
                         },
@@ -206,7 +206,7 @@ export default function Home() {
                             data-splitbee-event="Open Link"
                             data-splitbee-event-target="GitHub"
                             onClick={() => { }}
-                            href="https://github.com/timolins/woby-toast"
+                            href="https://github.com/timolins/toast"
                         >
                             <GitHub class="opacity-100" />
                             <span class="flex-1 text-toast-800 text-center">GitHub</span>

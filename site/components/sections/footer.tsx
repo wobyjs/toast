@@ -1,5 +1,5 @@
 import { } from 'woby'
-import { Navigate } from 'woby-router'
+import { Navigate } from '@woby/router'
 
 export function Footer({ noBadge }: { noBadge?: boolean }) {
     console.log('Footer')
@@ -8,7 +8,7 @@ export function Footer({ noBadge }: { noBadge?: boolean }) {
             <div class="flex space-x-4">
                 <a
                     class="underline"
-                    href="https://github.com/timolins/woby-toast"
+                    href="https://github.com/timolins/toast"
                 >
                     GitHub
                 </a>

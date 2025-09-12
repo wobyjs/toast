@@ -1,5 +1,5 @@
 import React, { $, $$, Child, useMemo, type JSX } from 'woby'
-import { tw, keyframes } from 'woby-styled'
+import { tw, keyframes } from '@woby/styled'
 
 import { Toast, ToastPosition, resolveValue } from '../core/types'
 import { ToastIcon } from './toast-icon'

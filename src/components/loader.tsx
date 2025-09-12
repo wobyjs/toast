@@ -1,4 +1,4 @@
-import { styled, keyframes } from 'woby-styled'
+import { styled, keyframes } from '@woby/styled'
 
 const rotate = keyframes`
   from {
@@ -10,8 +10,8 @@ const rotate = keyframes`
 `
 
 export interface LoaderTheme {
-    primary?: string
-    secondary?: string
+  primary?: string
+  secondary?: string
 }
 
 export const LoaderIcon = styled('div')`

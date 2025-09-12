@@ -1,5 +1,5 @@
 import { toast } from './core/toast'
-import '../dist/output.css'
+import './input.css'
 export * from './headless'
 
 export { ToastBar } from './components/toast-bar'

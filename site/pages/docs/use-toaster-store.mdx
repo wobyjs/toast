@@ -1,5 +1,5 @@
 import Layout from '../../components/docs-layout';
-import toast from 'woby-toast';
+import toast from '@woby/toast';
 
 export const meta = {
   title: 'useToasterStore() API',
@@ -14,7 +14,7 @@ This hook gives you access to the internal toaster state. This is the right choi
 In comparison to [`useToaster()`](/docs/use-toaster) it does not handle pausing or provide handlers for creating your own notification system.
 
 ```jsx
-import { useToasterStore } from 'woby-toast';
+import { useToasterStore } from '@woby/toast';
 
 const { toasts, pausedAt } = useToasterStore();
 ```

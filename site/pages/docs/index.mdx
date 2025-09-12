@@ -1,5 +1,5 @@
 import Layout from '../../components/docs-layout';
-import toast from 'woby-toast';
+import toast from '@woby/toast';
 
 export const meta = {
   title: 'Documentation',
@@ -9,7 +9,7 @@ export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
 
 # Getting Started
 
-Add beautiful notifications to your React app with [voby-toast](https://github.com/timolins/woby-toast).
+Add beautiful notifications to your React app with [voby-toast](https://github.com/timolins/toast).
 
 ### Install with Yarn
 
@@ -26,7 +26,7 @@ npm install voby-toast
 ## Basic usage
 
 ```jsx
-import toast, { Toaster } from 'woby-toast';
+import toast, { Toaster } from '@woby/toast';
 
 const notify = () => toast('Here is your toast.');
 

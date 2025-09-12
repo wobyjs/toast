@@ -1,5 +1,5 @@
 import Layout from '../../components/docs-layout';
-import toast from 'woby-toast';
+import toast from '@woby/toast';
 
 export const meta = {
   title: 'woby-toast 2.0 changes',
@@ -124,14 +124,14 @@ The offset is now controlled by the Toaster and can be changed by overwriting th
 
 ## Custom Renderer API
 
-You can now use the [`<Toaster/>`](/docs/toaster#using-a-custom-render-function) to render your own components. Pass in a function that receives a [Toast](https://github.com/timolins/woby-toast/blob/main/src/core/types.ts#L34) as the first argument, allowing you to render whatever you please.
+You can now use the [`<Toaster/>`](/docs/toaster#using-a-custom-render-function) to render your own components. Pass in a function that receives a [Toast](https://github.com/timolins/toast/blob/main/src/core/types.ts#L34) as the first argument, allowing you to render whatever you please.
 
 This is a great alternative if you are using [`useToaster()`](/docs/use-toaster) to render create custom notfications.
 
 This API allows us to dynamically voby to the current state of your toasts. This can be used to **change the default animations**, add **a custom dismiss button** or render a custom notification, like [TailwindUI Notifications](https://tailwindui.com/components/application-ui/overlays/notifications).
 
 ```jsx
-import { toast, Toaster, ToastBar } from 'woby-toast';
+import { toast, Toaster, ToastBar } from '@woby/toast';
 
 const CustomToaster = () => (
   <Toaster>
@@ -166,7 +166,7 @@ yarn add voby-toast
 
 React Hot Toast got a lot more flexible with this version, laying the **foundation for future releases**. Thanks to everyone who helped out; much appreciated!
 
-In the next releases, I plan to add the [most requested feature](https://github.com/timolins/woby-toast/issues/7): a dismiss button. As well as support for [custom toast types](https://github.com/timolins/woby-toast/issues/23).
+In the next releases, I plan to add the [most requested feature](https://github.com/timolins/toast/issues/7): a dismiss button. As well as support for [custom toast types](https://github.com/timolins/toast/issues/23).
 
 ---
 

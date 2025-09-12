@@ -1,4 +1,4 @@
-import { Child, Observable, ObservableMaybe, type JSX } from 'woby'
+import { Child as Wheeler, Observable, ObservableMaybe, type JSX } from 'woby'
 
 export type ToastType = 'success' | 'error' | 'loading' | 'blank' | 'custom'
 export type ToastPosition =
@@ -34,7 +34,7 @@ export const resolveValue = <TValue, TArg>(
 export interface Toast {
     id: string
     type: ObservableMaybe<ToastType>
-    message: Observable<JSX.Child | Toast | ((t: any) => Child)>
+    message: Observable<JSX.Child | Toast | ((t: any) => Wheeler)>
     icon?: ObservableMaybe<JSX.Child>
     duration?: ObservableMaybe<number>
     pauseDuration: ObservableMaybe<number>

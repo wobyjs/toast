@@ -1,7 +1,7 @@
 import * as React from 'woby'
 import { Toaster } from '../../src'
 // import { NextSeo } from 'next-seo'
-import { Navigate } from 'woby-router'
+import { Navigate } from '@woby/router'
 import { Footer } from './sections/footer'
 import Logo from '../assets/dist/logo-small'
 
@@ -29,7 +29,7 @@ export default function DocsLayout({ meta, children }) {
                 openGraph={{
                     images: [
                         {
-                            url: `https://woby-toast.com/social-image.png`,
+                            url: `https://toast.com/social-image.png`,
                             width: 1200,
                             height: 630,
                         },
@@ -47,7 +47,7 @@ export default function DocsLayout({ meta, children }) {
                     </Navigate>
                     <a
                         class="flex text-toast-600 underline"
-                        href="https://github.com/timolins/woby-toast"
+                        href="https://github.com/timolins/toast"
                     >
                         GitHub
                     </a>

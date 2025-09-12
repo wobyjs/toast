@@ -1,7 +1,7 @@
 /** @jsx  */
 import { ObservableMaybe, jsx, $$, useMemo, type JSX } from 'woby'
 
-import { tw, styled, keyframes } from 'woby-styled'
+import { tw, styled, keyframes } from '@woby/styled'
 
 import { Toast } from '../core/types'
 import { ErrorIcon, ErrorTheme } from './error'

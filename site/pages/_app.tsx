@@ -1,7 +1,7 @@
 import '../styles/tailwind-utils.css'
 import '../styles/main.css'
 import * as React from 'woby'
-import { Navigate } from 'woby-router'
+import { Navigate } from '@woby/router'
 import Head from 'next/head'
 import { Analytics } from '@vercel/analytics/woby'
 

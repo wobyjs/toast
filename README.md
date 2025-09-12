@@ -1,4 +1,4 @@
-# Woby-Toast
+# @woby/toast
 
 ## Ported from [react-hot-toast](https://react-hot-toast.com/)
 
@@ -15,28 +15,26 @@
 - ⏳ **Promise API** - _Automatic loader from a promise_
 - 🕊 **Lightweight** - _less than 5kb including styles_
 - ✅ **Accessible**
-- 🤯 **Headless Hooks** - _Create your own with [`useToaster()`](https://woby-toast.com/docs/use-toaster)_
+- 🤯 **Headless Hooks** - _Create your own with [`useToaster()`](https://wobyjs.github.io/toast/docs/use-toaster)_
 
 ## Installation
 
 #### With yarn
 
 ```sh
-yarn add woby-toast
+yarn add @woby/toast
 ```
 
 #### With NPM
 
 ```sh
-npm install woby-toast
+npm install @woby/toast
 ```
 
-## Getting Started
+## Basic Example
 
-Add the Toaster to your app first. It will take care of rendering all notifications emitted. Now you can trigger `toast()` from anywhere!
-
-```jsx
-import { toast, Toaster } from 'woby-toast';
+```tsx
+import { toast, Toaster } from '@woby/toast';
 
 const notify = () => toast('Here is your toast.');
 
