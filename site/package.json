@@ -51,8 +51,8 @@
         "svg2tsx": "workspace:../../svg2tsx",
         "vite-plugin-dts": "^2.3.0",
         "vite-plugin-svgr": "^3.2.0",
-        "woby-router": "workspace:*",
-        "woby-toast": "workspace:../",
+        "@woby/router": "workspace:*",
+        "@woby/toast": "workspace:../",
         "yargs": "^17.7.2"
     }
 }

@@ -42,7 +42,7 @@ export default function DocsLayout({ meta, children }) {
                     <Navigate to="/">
                         <Logo
                             class="cursor-pointer"
-                            aria-label="woby-toast Logo"
+                            aria-label="@woby/toast Logo"
                         />
                     </Navigate>
                     <a

@@ -112,7 +112,7 @@ export default function Home() {
     return <Router routes={[]}>
         <div class="overflow-x-hidden">
             {/* <NextSeo
-                title={'woby-toast - The Best React Notifications in Town'}
+                title={'@woby/toast - The Best React Notifications in Town'}
                 openGraph={{
                     images: [
                         {
@@ -136,7 +136,7 @@ export default function Home() {
                     <div>
                         <Logo
                             role="img"
-                            aria-label="woby-toast"
+                            aria-label="@woby/toast"
                             class="relative animate-slide-in transition-all duration-200 -mt-8 md:-mt-4"
                             style={{
                                 willChange: 'filter',

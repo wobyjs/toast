@@ -11,13 +11,13 @@ const config = defineConfig({
         minify: false,
         lib: {
             entry: ["./src/index.ts"],
-            name: "woby-toast",
+            name: "@woby/toast",
             formats: [/*'cjs', '*/'es'/*, 'umd'*/],
             fileName: (format: string, entryName: string) => `${entryName}.${format}.js`
         },
         sourcemap: true,
         rollupOptions: {
-            external: ['woby', 'woby/jsx-runtime', 'oby', 'woby-styled', 'woby-router'],
+            external: ['woby', 'woby/jsx-runtime', 'oby', '@woby/styled', '@woby/router'],
             output: {
                 globals: {
                     'woby': 'woby',
